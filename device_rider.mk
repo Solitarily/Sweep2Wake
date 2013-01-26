@@ -123,11 +123,11 @@ $(call inherit-product, device/htc/rider/media_htcaudio.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Optional packages
-PRODUCT_PACKAGES += \
-    FileManager 
+$(call inherit-product, vendor/htc/denon/prebuilt/denon.mk)
 
-# Install Gapps
-$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
+PRODUCT_PACKAGES += \
+    FileManager \
+    GooglePinyinIME
 
 # Discard inherited values and use our own instead.
 PRODUCT_DEVICE := rider
