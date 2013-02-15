@@ -1,44 +1,16 @@
 import init.rider.usb.rc
 
 on early-init
-    export EXTERNAL_STORAGE /storage/sdcard0
-    mkdir /storage 0775 root system
+    mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/usbdisk 0775 system system
+    
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard1 /usbdisk
-    symlink /storage/sdcard1 /mnt/usbdisk
-
-    #8x60: firmware
-    rm /vendor
-    mkdir /vendor 0771 system system
-    mkdir /vendor/firmware 0771 system system
-    mkdir /vendor/firmware/misc 0771 system system
-    mkdir /vendor/firmware/adsp 0771 system system
-    wait /dev/block/mmcblk0p18
-    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc ro shortname=lower
-    symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
-    symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
-    symlink /vendor/firmware/misc/q6.b05 /vendor/firmware/q6.b05
-    symlink /vendor/firmware/misc/q6.b04 /vendor/firmware/q6.b04
-    symlink /vendor/firmware/misc/q6.b03 /vendor/firmware/q6.b03
-    symlink /vendor/firmware/misc/q6.b02 /vendor/firmware/q6.b02
-    symlink /vendor/firmware/misc/q6.b01 /vendor/firmware/q6.b01
-    symlink /vendor/firmware/misc/q6.b00 /vendor/firmware/q6.b00
-    symlink /vendor/firmware/misc/q6.mdt /vendor/firmware/q6.mdt
-    symlink /vendor/firmware/misc/modem.b09 /vendor/firmware/modem.b09
-    symlink /vendor/firmware/misc/modem.b08 /vendor/firmware/modem.b08
-    symlink /vendor/firmware/misc/modem.b07 /vendor/firmware/modem.b07
-    symlink /vendor/firmware/misc/modem.b06 /vendor/firmware/modem.b06
-    symlink /vendor/firmware/misc/modem.b05 /vendor/firmware/modem.b05
-    symlink /vendor/firmware/misc/modem.b04 /vendor/firmware/modem.b04
-    symlink /vendor/firmware/misc/modem.b03 /vendor/firmware/modem.b03
-    symlink /vendor/firmware/misc/modem.b02 /vendor/firmware/modem.b02
-    symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
-    symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
-    symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
+    export EXTERNAL_STORAGE /storage/sdcard0
 
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
@@ -46,8 +18,7 @@ on early-init
 on init
 	mkdir /devlog 0700 root root
 
-
-on emmc-fs
+on fs
 	#enable rw on system partition.
 #    mount_all /fstab.rider
     mount ext4 /dev/block/mmcblk0p23 /system wait rw data=ordered noauto_da_alloc
@@ -57,16 +28,7 @@ on emmc-fs
 
 	mount debugfs /sys/kernel/debug /sys/kernel/debug
 	
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-
-    symlink /system/vendor/firmware/fw_bcmdhd.bin /vendor/firmware/fw_bcmdhd.bin
-    symlink /system/vendor/firmware/fw_bcmdhd_apsta.bin /vendor/firmware/fw_bcmdhd_apsta.bin
-    symlink /system/vendor/firmware/fw_bcmdhd_p2p.bin /vendor/firmware/fw_bcmdhd_p2p.bin
-    symlink /system/etc/firmware/bcm4329.hcd /vendor/firmware/bcm4329.hcd
-
-	mkdir /vendor/etc 0771 system system
-	symlink /system/etc/audio_effects.conf /vendor/etc/audio_effects.conf
-
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=100
 
 on post-fs-data    
     # double check the perms and set owner
@@ -155,7 +117,7 @@ on boot
     chown system system /sys/class/optical_sensors/proximity/ps_led
     chown system system /sys/class/optical_sensors/proximity/ps_test_mode
 
-    # for CM performance
+    # for cm performance
     chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
     chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
     chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
@@ -176,8 +138,8 @@ on boot
     chown radio radio /sys/class/power_supply/battery/charger_control
     chmod 0660 /sys/class/power_supply/battery/charger_control
     
-    # for Slate charging timer
-    chown radio /sys/class/power_supply/battery/charger_timer
+	# for Slate charging timer
+	chown radio /sys/class/power_supply/battery/charger_timer
 
     # sync fs
     chown system /sys/devices/platform/rs300000a7.65536/force_sync
@@ -252,15 +214,6 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     oneshot
     keycodes 114 115
 
-service hciattach /system/bin/brcm_patchram_plus --enable_hci \
-        --tosleep 50000 --baudrate 3000000 --use_baudrate_for_download \
-        --patchram /system/etc/firmware/bcm4329.hcd /dev/ttyHS0
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p27 /dev/block/mmcblk0p28 /dev/block/mmcblk0p19
     class core
     user root
@@ -305,15 +258,15 @@ service htcbatt /system/bin/htcbatt
     class core
     user root
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_while_panel_off
-    user root
-    disabled
-	handled by kernel
+#service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_while_panel_off
+#    user root
+#    disabled
+#	handled by kernel
 
-service thermald /system/bin/thermald
-    user root
-    disabled
-	handled by kernel
+#service thermald /system/bin/thermald
+#    user root
+#    disabled
+#	handled by kernel
 
 service qcom-post-boot /system/sbin/init.qcom.post_boot.sh
     user root

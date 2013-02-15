@@ -17,16 +17,30 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Device ID
+PRODUCT_NAME := full_rider
+PRODUCT_DEVICE := rider
+
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/rider/overlay
 
-# GPS
+# GPS and sensors
 PRODUCT_PACKAGES += \
     gps.rider
 
-# Wifi
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
+## The gps config appropriate for this device
+PRODUCT_COPY_FILES += device/htc/rider/configs/gps.conf:system/etc/gps.conf
+
+# Bluetooth firmware
+PRODUCT_COPY_FILES += \
+    device/htc/msm8660-common/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
+
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 # Boot ramdisk setup
@@ -44,7 +58,7 @@ PRODUCT_COPY_FILES += \
     device/htc/rider/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/rider/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt
 
-# Some misc configeration files
+# Some misc configuration files
 PRODUCT_COPY_FILES += \
     device/htc/rider/vold.fstab:system/etc/vold.fstab
 
@@ -61,10 +75,6 @@ PRODUCT_COPY_FILES += \
 # Input device config
 PRODUCT_COPY_FILES += \
     device/htc/rider/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc
-
-# Device Specific Firmware
-PRODUCT_COPY_FILES += \
-    device/htc/rider/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb 
 
 # HTC BT Audio tune
 PRODUCT_COPY_FILES += device/htc/rider/dsp/AudioBTID.csv:system/etc/AudioBTID.csv
@@ -101,9 +111,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
-# Bluetooth firmware
-$(call inherit-product, device/htc/msm8660-common/bcm_hcd.mk)
-
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
@@ -121,10 +128,3 @@ $(call inherit-product, device/htc/rider/media_a1026.mk)
 $(call inherit-product, device/htc/rider/media_htcaudio.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
-# Discard inherited values and use our own instead.
-PRODUCT_DEVICE := rider
-PRODUCT_NAME := rider
-PRODUCT_BRAND := htc
-PRODUCT_MODEL := X515e
-PRODUCT_MANUFACTURER := HTC

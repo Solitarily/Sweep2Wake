@@ -21,10 +21,6 @@
      for different hardware and product builds. -->
 <resources>
 
-    <!-- Boolean indicating if current platform supports quick switch-on/off of
-         Bluetooth module -->
-    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
-
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
 
@@ -35,7 +31,7 @@
     <integer name="config_defaultNotificationLedOff">9000</integer>
 
     <!-- Our amoled doesn't animate well. -->
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- disable menu hard key on Pyramid in non-pattern lockscreen -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
@@ -123,9 +119,6 @@
         <item>0</item>
     </integer-array>
 
-<!-- Needed for capacitive buttons to work without toggling auto-brightness -->
-    <bool name="config_autoBrightnessButtonKeyboard">false</bool>
-
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">10</integer>
 
@@ -152,18 +145,16 @@
     <!-- An Array of "[ConnectivityManager connectionType],
          [# simultaneous connection types]"  -->
     <string-array translatable="false" name="radioAttributes">
-        <item>6,1</item>
-        <item>1,1</item>
-        <item>0,1</item>
-        <item>7,1</item>
+        <item>"1,1"</item>
+        <item>"0,1"</item>
+        <item>"7,1"</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>rndis0</item>
-        <item>usb0</item>
+        <item>"rndis0"</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -187,9 +178,15 @@
         <item>0</item>
         <item>1</item>
         <item>5</item>
-        <item>6</item>
         <item>7</item>
     </integer-array>
+
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- The standard AOSP fused location provider -->
+        <item>com.android.location.fused</item>
+        <!-- The Google Network Location Services location provider -->
+        <item>com.google.android.location</item>
+    </string-array>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
@@ -201,6 +198,6 @@
     <bool name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <!-- <bool name="config_intrusiveNotificationLed">true</bool> -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
 
 </resources>

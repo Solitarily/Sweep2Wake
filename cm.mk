@@ -4,7 +4,7 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 # Release name
 PRODUCT_RELEASE_NAME := rider
 
-TARGET_BOOTANIMATION_NAME := 540
+TARGET_BOOTANIMATION_NAME := vertical-540x960
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
@@ -16,7 +16,7 @@ $(call inherit-product, device/htc/rider/device_rider.mk)
 PRODUCT_DEVICE := rider
 PRODUCT_NAME := cm_rider
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := X515e
+PRODUCT_MODEL := HTC X515E
 PRODUCT_MANUFACTURER := HTC
 
 # Set build fingerprint / ID / Product Name ect.
