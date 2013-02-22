@@ -46,9 +46,8 @@ BUILD_KERNEL := true
 # Kernel [Prebuilt]
 #TARGET_PREBUILT_KERNEL := device/htc/rider/prebuilt/kernel
 
-# Wifi
-WIFI_DRIVER_MODULE_NAME          := bcmdhd
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
+# Bluetooth/Wifi
+-include device/htc/msm8660-common/bcmdhd.mk
 
 # Qcom GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := rider
