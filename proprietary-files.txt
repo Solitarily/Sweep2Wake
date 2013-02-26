@@ -40,6 +40,20 @@ lib/libposteffect.so
 lib/libcameraservice.so
 
 # Chromatix
+lib/libchromatix_imx105_default_video.so
+lib/libchromatix_imx105_preview.so
+lib/libchromatix_imx105_zsl.so
+lib/libchromatix_mt9d015_default_video.so
+lib/libchromatix_mt9d015_default_zsl.so
+lib/libchromatix_mt9d015_preview.so
+lib/libchromatix_ov8830_default_video.so
+lib/libchromatix_ov8830_hfr.so
+lib/libchromatix_ov8830_preview.so
+lib/libchromatix_ov8830_zsl.so
+lib/libchromatix_s5k3h1gx_default_video.so
+lib/libchromatix_s5k3h1gx_hfr.so
+lib/libchromatix_s5k3h1gx_preview.so
+lib/libchromatix_s5k3h1gx_zsl.so
 lib/libchromatix_s5k3h2yx_default_video.so
 lib/libchromatix_s5k3h2yx_hfr.so
 lib/libchromatix_s5k3h2yx_preview.so
