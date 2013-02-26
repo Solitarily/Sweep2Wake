@@ -9,4 +9,3 @@
 /sdcard		vfat		/dev/block/mmcblk1p1	/dev/block/mmcblk1
 /system         ext4            /dev/block/mmcblk0p23
 /misc           emmc            /dev/block/mmcblk0p34
-/wimax		emmc		/dev/block/mmcblk0p8
