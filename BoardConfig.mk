@@ -20,10 +20,6 @@
 # definition file).
 #
 
-# WARNING: This line must come *before* including the proprietary
-# variant, so that it gets overwritten by the parent (which goes
-# against the traditional rules of inheritance).
-
 # inherit from common msm8660
 -include device/htc/msm8660-common/BoardConfigCommon.mk
 
@@ -43,9 +39,6 @@ TARGET_KERNEL_CONFIG := rider_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm8660
 BUILD_KERNEL := true
 
-# Kernel [Prebuilt]
-#TARGET_PREBUILT_KERNEL := device/htc/rider/prebuilt/kernel
-
 # Bluetooth/Wifi
 -include device/htc/msm8660-common/bcmdhd.mk
 
@@ -53,8 +46,8 @@ BUILD_KERNEL := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := rider
 
 # RIL
+BOARD_USES_LEGACY_RIL := true
 BOARD_USE_NEW_LIBRIL_HTC := true
-#TARGET_PROVIDES_LIBRIL := vendor/htc/rider/proprietary/libril.so
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -63,4 +56,3 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776192
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 838859776
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1252770816
 BOARD_FLASH_BLOCK_SIZE := 262144
-BOARD_HAS_NO_SELECT_BUTTON := true

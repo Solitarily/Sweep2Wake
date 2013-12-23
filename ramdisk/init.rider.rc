@@ -12,30 +12,71 @@ on early-init
     symlink /storage/usbdisk /mnt/usbdisk
     export EXTERNAL_STORAGE /storage/sdcard0
 
+    # load msm8660 firmware so things have time to initialize
+    rm /vendor
+    mkdir /vendor 0771 system system
+    mkdir /vendor/firmware 0771 system system
+    mkdir /vendor/firmware/misc 0771 system system
+    mkdir /vendor/firmware/adsp 0771 system system
+    wait /dev/block/mmcblk0p18
+    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc ro shortname=lower
+    symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
+    symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
+    symlink /vendor/firmware/misc/q6.b05 /vendor/firmware/q6.b05
+    symlink /vendor/firmware/misc/q6.b04 /vendor/firmware/q6.b04
+    symlink /vendor/firmware/misc/q6.b03 /vendor/firmware/q6.b03
+    symlink /vendor/firmware/misc/q6.b02 /vendor/firmware/q6.b02
+    symlink /vendor/firmware/misc/q6.b01 /vendor/firmware/q6.b01
+    symlink /vendor/firmware/misc/q6.b00 /vendor/firmware/q6.b00
+    symlink /vendor/firmware/misc/q6.mdt /vendor/firmware/q6.mdt
+    symlink /vendor/firmware/misc/modem.b09 /vendor/firmware/modem.b09
+    symlink /vendor/firmware/misc/modem.b08 /vendor/firmware/modem.b08
+    symlink /vendor/firmware/misc/modem.b07 /vendor/firmware/modem.b07
+    symlink /vendor/firmware/misc/modem.b06 /vendor/firmware/modem.b06
+    symlink /vendor/firmware/misc/modem.b05 /vendor/firmware/modem.b05
+    symlink /vendor/firmware/misc/modem.b04 /vendor/firmware/modem.b04
+    symlink /vendor/firmware/misc/modem.b03 /vendor/firmware/modem.b03
+    symlink /vendor/firmware/misc/modem.b02 /vendor/firmware/modem.b02
+    symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
+    symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
+    symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
+
     # Force loading of modem and Q6 images
     write /dev/smd_pkt_loopback 1
 
 on init
-	mkdir /devlog 0700 root root
+    mkdir /devlog 0700 root root
 
 on fs
-	#enable rw on system partition.
-#    mount_all /fstab.rider
-    mount ext4 /dev/block/mmcblk0p23 /system wait rw data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p24 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p29 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+    # mount all mmc partitions
+    mount_all /fstab.rider
 
-	mount debugfs /sys/kernel/debug /sys/kernel/debug
-	
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=100
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
-on post-fs-data    
+    symlink /system/vendor/firmware/fw_bcmdhd.bin /vendor/firmware/fw_bcmdhd.bin
+    symlink /system/vendor/firmware/fw_bcmdhd_apsta.bin /vendor/firmware/fw_bcmdhd_apsta.bin
+    symlink /system/vendor/firmware/fw_bcmdhd_p2p.bin /vendor/firmware/fw_bcmdhd_p2p.bin
+    symlink /system/vendor/firmware/bcm4329.hcd /vendor/firmware/bcm4329.hcd
+
+    # TEMP HACK 
+    symlink /system/vendor/lib /vendor/lib
+
+    mkdir /vendor/etc 0771 system system
+    symlink /system/etc/audio_effects.conf /vendor/etc/audio_effects.conf
+    symlink /system/etc/audio_policy.conf /vendor/etc/audio_policy.conf
+
+on post-fs-data
     # double check the perms and set owner
     chown root root /devlog
     chmod 0700 /devlog
 
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+
 on boot
+    # for systrace
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     # for Invense MPU3050
     chmod 0664 /dev/mpu
     chmod 0664 /dev/mpuirq
@@ -44,26 +85,16 @@ on boot
     chown system system /dev/mpuirq
     chown system system /dev/timerirq
 
-    mkdir /data/radio 0770 radio radio
 
-    #wifi
-    mkdir /data/misc 1771 system misc
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-
-    # Audio
-    mkdir /data/audio 0770 media audio
-
-    # Enable the setgid bit on the directory
-    chmod 2770 /data/audio
-
-    mkdir /data/radio 0770 radio radio
-    chmod 2770 /data/radio
-
-    # Set indication (checked by vold) that we have finished this action
-    setprop vold.post_fs_data_done 1
+    # Chown polling nodes as needed from UI running on system server
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
 
     # bluetooth power up/down interface
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -74,10 +105,29 @@ on boot
     chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddress
     setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddress
 
+    # for modem link
+    chown system system /sys/module/serial/parameters/modem_enabled
+
+    # wifi
+    mkdir /data/misc 1771 system misc
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+    # symlink for HDMI
+    symlink /dev/graphics/fb1 /dev/graphics/hdmi
+
+    # audio
+    mkdir /data/audio 2770 media audio
+
+    # radio
+    mkdir /data/radio 2770 radio radio
+
     # Permissions for touchscreen
     chmod 0666          /sys/android_touch/unlock
 
-    # Permissions for Liblights.
+    # liblights
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/amber/brightness
@@ -89,9 +139,6 @@ on boot
     chown system camera /sys/class/leds/flashlight/brightness
     chmod 0660          /sys/class/leds/flashlight/brightness
 
-    # symlink for HDMI
-    symlink /dev/graphics/fb1 /dev/graphics/hdmi
-
     # for display
     chown system system /sys/devices/virtual/graphics/fb1/format_3d 
     chmod 0644		/sys/devices/virtual/graphics/fb1/format_3d 
@@ -99,7 +146,6 @@ on boot
     chmod 0644		/sys/devices/platform/panel_3d/3D_mode
 
     # for wireless modem
-    chown system system /sys/module/serial/parameters/modem_enabled
     chown system system /dev/ttyHSUSB0
     chown system system /dev/ttySA0
     chown system system /dev/smd9
@@ -145,23 +191,10 @@ on boot
     chown system /sys/devices/platform/rs300000a7.65536/force_sync
     chown system /sys/devices/platform/rs300000a7.65536/sync_sts
 
-    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_sdcc.3/polling
-    chown system system /sys/devices/platform/msm_sdcc.4/polling
-
     # Overwrite framework low memory killer setting
     write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
-
-
 
 # SERVICE STARTS HERE
 
