@@ -37,8 +37,8 @@
   <project path="device/generic/goldfish" name="CyanogenMod/android_device_generic_goldfish" />
   <project path="device/generic/mips" name="CyanogenMod/android_device_generic_mips" />
   <project path="device/generic/x86" name="CyanogenMod/android_device_generic_x86" />
-  <project path="device/htc/msm8660-common" name="Denon/android_device_htc_msm8660-common" revision="cm-10.1" />
-  <project path="device/htc/rider" name="Denon/android_device_htc_rider" revision="cm-10.1" />
+  <project path="device/htc/msm8660-common" name="Denon/android_device_htc_msm8660-common" />
+  <project path="device/htc/rider" name="Denon/android_device_htc_rider" />
   <project path="device/google/accessory/arduino" name="CyanogenMod/android_device_google_accessory_arduino" groups="device" />
   <project path="device/google/accessory/demokit" name="CyanogenMod/android_device_google_accessory_demokit" groups="device" />
   <project path="device/sample" name="CyanogenMod/android_device_sample" groups="device" />
@@ -258,17 +258,18 @@
   <project path="hardware/msm7k" name="CyanogenMod/android_hardware_msm7k" />
   <project path="hardware/qcom/audio" name="CyanogenMod/android_hardware_qcom_audio" />
   <project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" />
-  <project path="hardware/qcom/audio-legacy" name="Denon/android_hardware_qcom_audio-legacy" revision="jellybean" />
+  <project path="hardware/qcom/audio-legacy" name="Denon/android_hardware_qcom_audio-legacy" />
   <project path="hardware/qcom/bt" name="CyanogenMod/android_hardware_qcom_bt" />
   <project path="hardware/qcom/camera" name="CyanogenMod/android_hardware_qcom_camera" />
   <project path="hardware/qcom/display" name="CyanogenMod/android_hardware_qcom_display" />
   <project path="hardware/qcom/display-caf" name="CyanogenMod/android_hardware_qcom_display-caf" />
-  <project path="hardware/qcom/display-legacy" name="Denon/android_hardware_qcom_display-legacy" revision="cm-10.1" />
+  <project path="hardware/qcom/display-legacy" name="Denon/android_hardware_qcom_display-legacy" />
   <project path="hardware/qcom/gps" name="CyanogenMod/android_hardware_qcom_gps" />
+  <project path="hardware/qcom/gps-legacy" name="Denon/android_hardware_qcom_gps-legacy" />
   <project path="hardware/qcom/keymaster" name="CyanogenMod/android_hardware_qcom_keymaster" />
   <project path="hardware/qcom/media" name="CyanogenMod/android_hardware_qcom_media" />
   <project path="hardware/qcom/media-caf" name="CyanogenMod/android_hardware_qcom_media-caf" />
-  <project path="hardware/qcom/media-legacy" name="Denon/android_hardware_qcom_media-legacy" revision="cm-10.1" />
+  <project path="hardware/qcom/media-legacy" name="Denon/android_hardware_qcom_media-legacy" />
   <project path="hardware/qcom/msm8960" name="CyanogenMod/android_hardware_qcom_msm8960" />
   <project path="hardware/qcom/power" name="CyanogenMod/android_hardware_qcom_power" />
   <project path="hardware/qcom/sensors" name="CyanogenMod/android_hardware_qcom_sensors" />
@@ -287,7 +288,7 @@
   <project path="packages/apps/Bluetooth" name="CyanogenMod/android_packages_apps_Bluetooth" />
   <project path="packages/apps/Browser" name="CyanogenMod/android_packages_apps_Browser" />
   <project path="packages/apps/Calculator" name="CyanogenMod/android_packages_apps_Calculator" />
-  <project path="packages/apps/Calendar" name="CyanogenMod/android_packages_apps_Calendar" />
+  <project path="packages/apps/Calendar" name="Denon/android_packages_apps_Calendar" />
   <project path="packages/apps/Camera" name="CyanogenMod/android_packages_apps_Camera" />
   <project path="packages/apps/CellBroadcastReceiver" name="CyanogenMod/android_packages_apps_CellBroadcastReceiver" />
   <project path="packages/apps/CertInstaller" name="CyanogenMod/android_packages_apps_CertInstaller" />
@@ -387,9 +388,9 @@
   <project path="system/vold" name="CyanogenMod/android_system_vold" />
   <project path="tools/build" name="platform/tools/build" remote="aosp" revision="refs/tags/android-4.2.2_r1" />
   <project path="tools/motodev" name="platform/tools/motodev" remote="aosp" revision="refs/tags/android-4.2.2_r1" />
-  <project path="vendor/cm" name="Denon/android_vendor_cm" revision="cm-10.1" />
-  <project path="vendor/htc/rider" name="Denon/android_vendor_htc_rider" revision="cm-10.1" />
-  <project path="kernel/htc/msm8660" name="Denon/android_kernel_htc_msm8660" revision="cm-10.1" />
+  <project path="vendor/cm" name="Denon/android_vendor_cm" />
+  <project path="vendor/htc/rider" name="Denon/android_vendor_htc_rider" />
+  <project path="kernel/htc/msm8660" name="Denon/android_kernel_htc_msm8660" />
   <project path="vendor/qcom/opensource/v8" name="CyanogenMod/android_vendor_qcom_opensource_v8" />
   <project path="vendor/tmobile/apps/ThemeChooser" name="CyanogenMod/themes-platform-vendor-tmobile-apps-ThemeChooser" />
   <project path="vendor/tmobile/libs/com.tmobile.themes" name="CyanogenMod/android_vendor_tmobile_libs_com.tmobile.themes" />
