@@ -1,16 +1,21 @@
+Solitarily CM Based Manifest
+===========
 
 Getting Started
 ---------------
 
-To get started with Android/CyanogenMod, you'll need to get
-familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
+To get started with Solitarily/CyanogenMod build, you'll need to get familiar with Git and Repo.
 
-To initialize your local repository using the CyanogenMod trees, use a command like this:
+To initialize your local repository using the Solitarily trees, use a command like this:
 
-    repo init -u git://github.com/Solitarily/android.git -b cm-10.1
+    repo init -u git://github.com/Solitarily/android.git -b cm-11.0
 
 Then to sync up:
 
     repo sync
 
+After the initial sync sync once more so that the local_manifest.xml will be picked up.
 
+After that you need to get proprietary CM bits:
+
+    ./vendor/cm/get-prebuilts
