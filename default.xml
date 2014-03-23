@@ -31,7 +31,7 @@
     <copyfile src="build-script" dest="mk" />
   </project>
 
-  <project path="android" name="MoKee/android" />
+  <project path="android" name="Solitarily/android" />
 
   <project path="abi/cpp" remote="cyanogen" revision="refs/heads/cm-11.0" name="github/CyanogenMod/android_abi_cpp" groups="pdk" />
   <project path="bionic" remote="cyanogen" revision="refs/heads/cm-11.0" name="github/CyanogenMod/android_bionic" groups="pdk" />
