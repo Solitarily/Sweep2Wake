@@ -448,7 +448,7 @@
   <!-- MoKee Bootable End -->
 
   <!-- MoKee Development Start -->
-  <project path="development" name="MoKee/android_development" />
+  <project path="development" name="Solitarily/android_development" />
   <!-- MoKee Development End -->
 
   <!-- MoKee External Start -->
@@ -521,11 +521,11 @@
   <project path="device/htc/msm8660-common" name="Solitarily/android_device_htc_msm8660-common" revision="kk_mkt" />
   <project path="device/htc/rider" name="Solitarily/android_device_htc_rider" revision="kk_mkt" />
   <project path="vendor/htc/rider" name="Solitarily/android_vendor_htc_rider" revision="kk_mkt" />
-  <project path="hardware/qcom/display-legacy" name="Solitarily/android_hardware_qcom_display-legacy" revision="cm-11.0" />
-  <project path="hardware/qcom/media-legacy" name="Solitarily/android_hardware_qcom_media-legacy" revision="cm-11.0" />
-  <project path="hardware/qcom/gps-legacy" name="Solitarily/android_hardware_qcom_gps-legacy" revision="cm-11.0" />
-  <project path="prebuilt/linux-x86/toolchain/linaro" name="Solitarily/linaro" revision="cm-11.0"/>
-  <project path="prebuilt/linux-x86/toolchain/linaro-arm-cortex-a8" name="Solitarily/linaro-arm-cortex-a8" revision="cm-11.0" />
+  <project path="hardware/qcom/display-legacy" name="Team-Hydra/android_hardware_qcom_display-legacy" revision="cm-11.0" />
+  <project path="hardware/qcom/media-legacy" name="Team-Hydra/android_hardware_qcom_media-legacy" revision="cm-11.0" />
+  <project path="hardware/qcom/gps-legacy" name="Team-Hydra/android_hardware_qcom_gps-legacy" revision="cm-11.0" />
+  <project path="prebuilt/linux-x86/toolchain/linaro" name="Team-Hydra/linaro" revision="cm-11.0"/>
+  <project path="prebuilt/linux-x86/toolchain/linaro-arm-cortex-a8" name="Team-Hydra/linaro-arm-cortex-a8" revision="cm-11.0" />
   <!-- Other End -->
 
 </manifest>
