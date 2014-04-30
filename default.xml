@@ -448,7 +448,7 @@
   <!-- MoKee Bootable End -->
 
   <!-- MoKee Development Start -->
-  <project path="development" name="Solitarily/android_development" />
+  <project path="development" name="Solitarily/android_development"  revision="cm-11.0" />
   <!-- MoKee Development End -->
 
   <!-- MoKee External Start -->
