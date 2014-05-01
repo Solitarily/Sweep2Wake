@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Open Camera</string>
+    <string name="action_settings">设置</string>
+    <string name="intro_text">触摸对焦并按下蓝色按钮，相机拍照。更多的帮助，请单击设置在线帮助。Open Camera 是完全免费的。如果你喜欢这个程序，请考虑购买我的捐献程序：）（见设置链接，或在线帮助）。.\n\n隐私政策：位置地理标记会记录您的当前地理位置，但是默认情况下禁用。如果启用，您的位置是在保存文件的编码中（它是只用于这个目的）。\n\n(这个消息不会再次显示。)</string>
+    <string name="intro_ok">确定 (这个消息不会再次显示)</string>
+    
+    <string name="preference_category_camera_effects">效果</string>
+    <string name="preference_auto_stabilise">自动稳定</string>
+    <string name="preference_auto_stabilise_summary">将图像旋转，所以他们会自动水平（照片）（慢拍照片，并有可能失败的设备与内存太低）</string>
+    <string name="preference_color_effect">色彩效果</string>
+    <string name="preference_color_effect_summary">为照片设置不同的色彩效果</string>
+    <string name="preference_scene_mode">取景模式</string>
+    <string name="preference_scene_mode_summary">优化不同场景的照片</string>
+    <string name="preference_white_balance">白平衡</string>
+    <string name="preference_white_balance_summary">选择一个调整白平衡</string>
+    <string name="preference_exposure">曝光补偿</string>
+    <string name="preference_exposure_summary">设置曝光补偿（默认为0）</string>
+    <string name="preference_face_detection">人脸检测</string>
+    <string name="preference_face_detection_summary">使用人脸检测而不是重点区域</string>
+
+    <string name="preference_category_camera_controls">设置</string>
+    <string name="preference_timer">延时拍摄</string>
+    <string name="preference_timer_summary">设置相机延迟拍摄的时间</string>
+    <string name="preference_timer_beep">定时提醒</string>
+    <string name="preference_timer_beep_summary">定时器倒计时或连拍延迟时是否播放声音提醒</string>
+    <string name="preference_burst_mode">连拍模式</string>
+    <string name="preference_burst_mode_summary">选择连拍照片的张数</string>
+    <string name="preference_burst_interval">连拍间隔</string>
+    <string name="preference_burst_interval_summary">连拍模式的照片之间的延迟（如果有）</string>
+    <string name="preference_screen_camera_controls_more">更多设置...</string>
+    <string name="preference_preview_size">预览大小</string>
+    <string name="preference_preview_size_summary">选择照片预览大小</string>
+    <string name="preference_pause_preview">拍照后暂停</string>
+    <string name="preference_pause_preview_summary">拍摄照片后是否要停留在屏幕，以共享或删除照片</string>
+    <string name="preference_shutter_sound">快门声音</string>
+    <string name="preference_shutter_sound_summary">是否要在拍照时播放快门音（需要Android4.2或更高版本禁用）</string>
+    <string name="preference_volume_keys">音量键</string>
+    <string name="preference_volume_keys_summary">设定按下音量键的行为</string>
+    <string name="preference_ui_placement">界面布局</string>
+    <string name="preference_ui_placement_summary">选择一个惯用左手或右手的用户界面</string>
+    <string name="preference_save_location">存储位置</string>
+    <string name="preference_save_location_summary">设置保存照片/视频的文件夹的名称（也可以是一个完整路径）</string>
+    <string name="preference_show_zoom">显示缩放</string>
+    <string name="preference_show_zoom_summary">在屏幕上显示当前相机的缩放级别（放大时）</string>
+    <string name="preference_free_memory">显示可用内存</string>
+    <string name="preference_free_memory_summary">在屏幕上显示设备的剩余存储空间</string>
+    <string name="preference_show_angle">显示角度</string>
+    <string name="preference_show_angle_summary">在屏幕上显示当前设备的旋转角度</string>
+    <string name="preference_show_angle_line">显示角度线</string>
+    <string name="preference_show_angle_line_summary">显示一条水平线</string>
+    <string name="preference_show_geo_direction">显示方向</string>
+    <string name="preference_show_geo_direction_summary">在屏幕上显示该设备的罗盘方向</string>
+    <string name="preference_grid">显示网格</string>
+    <string name="preference_grid_summary">在屏幕上显示一个网格</string>
+    <string name="preference_thumbnail_animation">显示缩略图动画</string>
+    <string name="preference_thumbnail_animation_summary">显示拍照时移动的缩略图动画</string>
+    <string name="preference_max_brightness">强制最大亮度</string>
+    <string name="preference_max_brightness_summary">强制屏幕显示在最大亮度，而不是设备的默认值</string>
+    
+    <string name="preference_category_camera_quality">照片和视频设置</string>
+    <string name="preference_screen_camera_quality">照片和视频设置…</string>
+    <string name="preference_location">保存所在位置（地理标记）</string>
+    <string name="preference_location_summary">是否为照片保存GPS位置数据</string>
+    <string name="preference_record_audio">录制音频</string>
+    <string name="preference_record_audio_summary">录制视频时是否记录音频</string>
+    <string name="preference_record_audio_src">音频源</string>
+    <string name="preference_record_audio_src_summary">使用麦克风录制音频</string>
+    
+    <string name="preference_category_online">其他</string>
+    <string name="preference_online_help">在线帮助</string>
+    <string name="preference_donate">捐赠支持发展</string>
+    <string name="preference_donate_summary">如果你喜欢这个程序，请考虑捐赠。你可以通过购买我的“捐款程序”单击此选项将打开网页我捐赠的应用。谢谢！</string>
+    <string name="preference_about">关于</string>
+    <string name="preference_about_summary">应用程序的调试信息</string>
+    <string name="about_ok">确定</string>
+    <string name="about_available">可用的</string>
+    <string name="about_not_available">暂无</string>
+    <string name="about_copy_to_clipboard">复制到剪贴板</string>
+
+    <string name="taking_photo">拍摄的照片...</string>
+    <string name="no_gallery_app">没有相册应用程序可用</string>
+    <string name="exposure_compensation">曝光补偿</string>
+    <string name="photo_deleted">删除照片</string>
+    <string name="failed_take_picture">无法采取图片</string>
+    <string name="failed_save_photo">无法保存照片</string>
+    <string name="failed_save_image_file">无法保存图像文件</string>
+    <string name="failed_record_video">无法录制视频</string>
+    <string name="failed_save_video_file">无法保存视频文件</string>
+    <string name="failed_save_video">无法保存视频</string>
+    <string name="started_timer">开始计时</string>
+    <string name="cancelled_timer">取消计时</string>
+    <string name="started_video">开始录制视频</string>
+    <string name="stopped_video">停止录制视频 </string>
+     <string name="camera_error">无法重新连接到相机 </string>
+    <string name="back_camera">主摄像头</string>
+    <string name="front_camera">前置摄像头</string>
+    <string name="photo">照相</string>
+    <string name="video">摄相</string>
+    <string name="direction">方向:</string>
+    <string name="angle">角度:</string>
+    <string name="free_memory">可用内存:</string>
+    <string name="take_photo">拍照</string>
+    <string name="gallery">相册</string>
+    <string name="exposure">曝光</string>
+    <string name="focus_mode">对焦模式</string>
+    <string name="flash_mode">闪光模式</string>
+    <string name="switch_camera">切换相机</string>
+    <string name="switch_video">切换视频</string>
+    <string name="trash">删除最后一张照片</string>
+    <string name="share">分享照片</string>
+    
+</resources>

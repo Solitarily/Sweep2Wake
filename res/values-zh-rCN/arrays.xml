@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="flash_icons">
+        <item>drawable/flash_off</item>
+        <item>drawable/flash_auto</item>
+        <item>drawable/flash_on</item>
+        <item>drawable/flash_torch</item>
+        <item>drawable/flash_red_eye</item>
+    </string-array>
+    <string-array name="flash_entries">
+        <item>关闭</item>
+        <item>自动</item>
+        <item>强制</item>
+        <item>手电筒</item>
+        <item>红眼</item>
+    </string-array>
+    <string-array name="flash_values">
+        <item>flash_off</item>
+        <item>flash_auto</item>
+        <item>flash_on</item>
+        <item>flash_torch</item>
+        <item>flash_red_eye</item>
+    </string-array>
+    <string-array name="focus_mode_icons">
+        <item>drawable/focus_mode_auto</item>
+        <item>drawable/focus_mode_infinity</item>
+        <item>drawable/focus_mode_macro</item>
+        <item>drawable/focus_mode_fixed</item>
+        <item>drawable/focus_mode_edof</item>
+        <item>drawable/focus_mode_continuous_video</item>
+    </string-array>
+    <string-array name="focus_mode_entries">
+        <item>自动</item>
+        <item>无限</item>
+        <item>微距</item>
+        <item>固定</item>
+        <item>EDOF</item>
+        <item>连续</item>
+    </string-array>
+    <string-array name="focus_mode_values">
+        <item>focus_mode_auto</item>
+        <item>focus_mode_infinity</item>
+        <item>focus_mode_macro</item>
+        <item>focus_mode_fixed</item>
+        <item>focus_mode_edof</item>
+        <item>focus_mode_continuous_video</item>
+    </string-array>
+    <string-array name="preference_timer_entries">
+        <item>无</item>
+        <item>1秒</item>
+        <item>2秒</item>
+        <item>5秒</item>
+        <item>10秒</item>
+        <item>15秒</item>
+        <item>20秒</item>
+        <item>30秒</item>
+        <item>60秒</item>
+        <item>2分钟</item>
+        <item>5分钟</item>
+    </string-array>
+    <string-array name="preference_timer_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+    <string-array name="preference_burst_mode_entries">
+        <item>关</item>
+        <item>2张</item>
+        <item>3张</item>
+        <item>4张</item>
+        <item>5张</item>
+        <item>10张</item>
+    </string-array>
+    <string-array name="preference_burst_mode_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="preference_burst_interval_entries">
+        <item>无</item>
+        <item>1秒</item>
+        <item>2秒</item>
+        <item>5秒</item>
+        <item>10秒</item>
+        <item>15秒</item>
+        <item>20秒</item>
+        <item>30秒</item>
+        <item>60秒</item>
+        <item>2分钟</item>
+        <item>5分钟</item>
+    </string-array>
+    <string-array name="preference_burst_interval_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+    <string-array name="preference_preview_size_entries">
+        <item>最大化预览</item>
+        <item>匹配照片/视频大小</item>
+    </string-array>
+    <string-array name="preference_preview_size_values">
+        <item>preference_preview_size_display</item>
+        <item>preference_preview_size_wysiwyg</item>
+    </string-array>
+    <string-array name="preference_volume_keys_entries">
+        <item>拍摄照片</item>
+        <item>放大/缩小</item>
+        <item>调节曝光</item>
+        <item>调整音量</item>
+    </string-array>
+    <string-array name="preference_volume_keys_values">
+        <item>volume_take_photo</item>
+        <item>volume_zoom</item>
+        <item>volume_exposure</item>
+        <item>volume_nothing</item>
+    </string-array>
+    <string-array name="preference_ui_placement_entries">
+        <item>惯用左手的用户界面</item>
+        <item>惯用右手的用户界面</item>
+    </string-array>
+    <string-array name="preference_ui_placement_values">
+        <item>ui_left</item>
+        <item>ui_right</item>
+    </string-array>
+    <string-array name="preference_grid_entries">
+        <item>无</item>
+        <item>3x3</item>
+        <item>4x2</item>
+	</string-array>
+    <string-array name="preference_grid_values">
+        <item>preference_grid_none</item>
+        <item>preference_grid_3x3</item>
+        <item>preference_grid_4x2</item>
+        </string-array>
+    <string-array name="preference_record_audio_src_entries">
+        <item>摄像机</item>
+        <item>外部麦克风（如果存在的话）</item>
+    </string-array>
+    <string-array name="preference_record_audio_src_values">
+        <item>audio_src_camcorder</item>
+        <item>audio_src_mic</item>
+    </string-array>
+</resources>

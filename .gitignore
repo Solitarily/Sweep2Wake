@@ -1,0 +1,7 @@
+_archive/
+_devdocs/
+
+bin/
+gfx/
+
+*.db
